@@ -2,16 +2,20 @@ package bytebank;
 
 public class Conta {
 	private Double saldo;
-	private int agencia = 1;
+	private int agencia;
 	private int numero;
 	private Cliente cliente;
-
+	private static int totalDeContas;
+	
 	public Conta() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public Conta(Double saldo, int agencia, int numero, Cliente cliente) {
 		super();
+		totalDeContas++; //sempre que cria uma conta aumenta 1 no contador
+		System.out.println("total de contas: " + totalDeContas);
+		// e possivel colocar alguns if aqui para verificar os dados (até mesmo impedir a criação do objeto)
 		this.saldo = saldo;
 		this.agencia = agencia;
 		this.numero = numero;
@@ -20,6 +24,8 @@ public class Conta {
 
 	public Conta(Double saldo) {
 		super();
+		totalDeContas++;
+		System.out.println("total de contas: " + totalDeContas);
 		this.saldo = saldo;
 	}
 
@@ -56,6 +62,10 @@ public class Conta {
 
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
+	}
+	
+	public static int getTotalDeContas() {
+		return totalDeContas;
 	}
 
 	@Override
